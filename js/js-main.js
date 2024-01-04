@@ -229,5 +229,14 @@
 	});
 
 
+	const params = new Proxy(new URLSearchParams(window.location.search), {
+		get: (searchParams, prop) => searchParams.get(prop),
+	});
+	const to = params.to;
+	const invited = document.getElementById('invited');
+
+	if (to && invited) {
+		invited.innerHTML = `Kepada Yth. ${to}`;
+	}
 }());
 
